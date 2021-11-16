@@ -1,7 +1,7 @@
 from dataclasses import dataclass
-from model import Model
 from typing import List
-from replacement_policy import ReplacementPolicy
+from .model import Model
+from .replacement_policy import ReplacementPolicy
 
 @dataclass(frozen=True)
 class SimulationResult:

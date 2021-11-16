@@ -1,7 +1,7 @@
-from replacement_policy import ReplacementPolicy
+from .replacement_policy import ReplacementPolicy
 from typing import Iterator, Union, Tuple
-from events import HitEvent, MissEvent
-from block import Block
+from .events import HitEvent, MissEvent
+from .block import Block
 
 class Model:
     def __init__(self, log_sets: int, no_ways: int) -> None:
@@ -73,4 +73,3 @@ class Model:
                     yield MissEvent(block, idx, state[block.set][idx], compulsory)
                     state[block.set][idx] = block
             replacement_policy.access(block)
-

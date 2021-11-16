@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import List
-from block import Block
+from .block import Block
 
 class ReplacementPolicy(ABC):
     @abstractmethod
