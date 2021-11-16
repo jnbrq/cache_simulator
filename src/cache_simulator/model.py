@@ -54,7 +54,7 @@ class Model:
         for address in self._accesses:
             block = Block.from_address(self, address)
             compulsory = False
-            if not block in encountered_blocks:
+            if block not in encountered_blocks:
                 compulsory = True
                 encountered_blocks.add(block)
             if check_block(block):

@@ -11,12 +11,11 @@ from cache_simulator import *
 
 print(Simulator(
     # Cache model (log number of sets, associativity)
-    Model(1, 2))
+    Model(1, 1))
     .simulate(
         # access sequence
-        [2,2,5,3,0,5,0,3,5,0,0,4,1,2,5,1],
+        [2,3,4,3,0,1,0,3,0,3,1,2,3,0,2,3],
         # replacement policy
         LRUReplacementPolicy(),
         # the whole trace
         trace=True))
-

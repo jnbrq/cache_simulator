@@ -58,9 +58,10 @@ class Simulator:
                 print(event)
             if event.hit:
                 hits += 1
-            elif event.compulsory:
-                comp_misses += 1
-            model_misses += 1
+            else:
+                if event.compulsory:
+                    comp_misses += 1
+                model_misses += 1
         
         conf_misses = model_misses - full_assoc_misses
 
