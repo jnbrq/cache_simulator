@@ -37,14 +37,20 @@ class Simulator:
             self._full_assoc_model.access(access)
 
         hits = 0
-        compulsory_misses = 0
-        conflict_misses = 0
-        capacity_misses = 0
+        full_assoc_misses = 0
+        model_misses = 0
+        comp_misses = 0
 
         # step 1: find the capacity misses
         for event in self._full_assoc_model.simulate(replacement_policy):
-            if not event.hit and not event.compulsory:
-                capacity_misses += 1
+            if trace:
+                print(event)
+            if not event.hit:
+                full_assoc_misses += 1
+        
+        if trace:
+            print(f"Fully associative cache misses = { full_assoc_misses }")
+            print("===+===+===")
         
         # step 2: find other types of misses
         for event in self._model.simulate(replacement_policy):
@@ -53,10 +59,14 @@ class Simulator:
             if event.hit:
                 hits += 1
             elif event.compulsory:
-                compulsory_misses += 1
-            else:
-                conflict_misses += 1
-        conflict_misses -= capacity_misses
+                comp_misses += 1
+            model_misses += 1
+        
+        conf_misses = model_misses - full_assoc_misses
 
+        if trace:
+            print(f"Model misses = { model_misses }")
+            print("===+===+===")
+        
         # return the result
-        return SimulationResult(hits, compulsory_misses, conflict_misses, capacity_misses)
+        return SimulationResult(hits, comp_misses, conf_misses, model_misses - conf_misses - comp_misses)
