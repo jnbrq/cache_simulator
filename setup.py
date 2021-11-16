@@ -25,8 +25,6 @@ setuptools.setup(
     include_package_data=True,
     python_requires=">=3.6",
     package_data={  },
-    install_requires=[
-        'jinja2',
-    ],
+    install_requires=[ ],
     license="MIT"
 )
