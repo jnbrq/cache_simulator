@@ -7,6 +7,12 @@ This is a simple cache simulator written in Python3 that can output the followin
 - Number of capacity misses
 - Number of conflict misses
 
+## Installation
+
+    python3 -m pip install --upgrade --force-reinstall git+https://github.com/jnbrq/cache_simulator
+
+## Usage
+
 You can easily import the package and simulate with:
 
     from cache_simulator import *
@@ -21,7 +27,7 @@ You can easily import the package and simulate with:
             LRUReplacementPolicy(),
             # the whole trace
             trace=True))
-    
+
 ## Available Replacement Policies
 
 - `FIFOReplacementPolicy`
